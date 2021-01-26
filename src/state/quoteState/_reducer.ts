@@ -5,11 +5,7 @@ import { TQuoteState, TQuoteStateAction } from './_types';
 export const initialState: TQuoteState = {
     isLoading: false,
     error: null,
-    current: {
-        author: '',
-        content: '',
-        length: 0,
-    },
+    quote: new Quote(),
 };
 
 export const reducer: React.Reducer<TQuoteState, TQuoteStateAction> = (
@@ -18,8 +14,8 @@ export const reducer: React.Reducer<TQuoteState, TQuoteStateAction> = (
 ) => {
     switch (action.type) {
         case ACTIONS.SET_QUOTE: {
-            const current = action.payload as Quote;
-            return { ...state, current };
+            const quote = action.payload as Quote;
+            return { ...state, quote };
         }
 
         case ACTIONS.SET_QUOTE_IS_LOADING:

@@ -3,13 +3,20 @@ import { Text } from './Text';
 
 export class Quote {
     author: string;
-    content: Text | string;
+    text: Text;
     length: number;
 
-    constructor(apiQuote: TQuoteApiDataQuote) {
-        const { author, text } = apiQuote;
+    constructor(apiQuote?: TQuoteApiDataQuote) {
+        const { author, text } = apiQuote || this._defaultApiQuote();
         this.author = author;
-        this.content = new Text(text);
+        this.text = new Text(text);
         this.length = text.length;
+    }
+
+    private _defaultApiQuote(): TQuoteApiDataQuote {
+        return {
+            author: '',
+            text: '',
+        };
     }
 }
