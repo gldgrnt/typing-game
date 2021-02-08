@@ -1,24 +1,36 @@
-import { useQuoteContext } from 'state/quoteState';
+import { useState, useEffect } from 'react';
+import { IProps } from './TypingText.types';
 
-const TypingText: React.FC = () => {
-    const [quoteState, quoteActions] = useQuoteContext();
-    const currentQuote = quoteState?.current;
+export const TypingText: React.FC<IProps> = (props) => {
+    const { currentQuote, allUserWords } = props;
+    const [currentIndex, setCurrentIndex] = useState(0);
 
-    const handleClick = () => {
-        if (quoteActions && quoteState?.isLoading === false)
-            return quoteActions.getQuote();
-    };
-
-    const quote =
-        currentQuote?.content?.toString() || 'Hello, press the button to go';
+    useEffect(() => {
+        setCurrentIndex(currentQuote.getCurrentIndex());
+    }, [allUserWords]);
 
     return (
         <div>
-            <h3>{quote}</h3>
-            <button onClick={handleClick}>Get new quote</button>
-            {quoteState?.isLoading && <p>Loading...</p>}
+            <h3>
+                {currentQuote.length === 0
+                    ? 'Get a new quote'
+                    : currentQuote.words.map((word, idx) => {
+                          let color;
+
+                          if (idx === currentIndex) {
+                              color =
+                                  word === allUserWords[currentIndex]
+                                      ? 'green'
+                                      : 'orange';
+                          } else if (idx < currentIndex) {
+                              color =
+                                  word === allUserWords[idx] ? 'green' : 'red';
+                          } else {
+                              color = 'black';
+                          }
+                          return <span style={{ color }}>{`${word} `}</span>;
+                      })}
+            </h3>
         </div>
     );
 };
-
-export default TypingText;
