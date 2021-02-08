@@ -1,11 +1,13 @@
-import { Quote } from 'classes';
 import { ACTIONS } from './_actions';
-import { TQuoteState, TQuoteStateAction } from './_types';
+import { TQuoteState, TQuoteStateQuote, TQuoteStateAction } from './_types';
 
 export const initialState: TQuoteState = {
     isLoading: false,
     error: null,
-    quote: new Quote(),
+    quote: {
+        author: '',
+        text: '',
+    },
 };
 
 export const reducer: React.Reducer<TQuoteState, TQuoteStateAction> = (
@@ -14,7 +16,7 @@ export const reducer: React.Reducer<TQuoteState, TQuoteStateAction> = (
 ) => {
     switch (action.type) {
         case ACTIONS.SET_QUOTE: {
-            const quote = action.payload as Quote;
+            const quote = action.payload as TQuoteStateQuote;
             return { ...state, quote };
         }
 

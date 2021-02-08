@@ -1,15 +1,19 @@
-import { Quote } from 'classes';
 import { QuoteStateActions, ACTIONS } from './_actions';
+
+export type TQuoteStateQuote = {
+    author: string;
+    text: string;
+};
 
 export type TQuoteState = {
     isLoading: boolean;
     error: null | Error;
-    current: Quote;
+    quote: TQuoteStateQuote;
 };
 
 export type TQuoteContext = [TQuoteState, QuoteStateActions];
 
 export type TQuoteStateAction = {
     type: ACTIONS;
-    payload?: Quote | boolean | Error | null;
+    payload?: TQuoteStateQuote | boolean | Error | null;
 };

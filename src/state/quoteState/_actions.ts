@@ -1,4 +1,3 @@
-import { Quote } from 'classes';
 import { StateActions } from 'state/shared';
 import { getQuote, TQuoteApiData, TQuoteApiDataQuote } from 'services/quoteApi';
 import { TQuoteStateAction } from './_types';
@@ -40,9 +39,13 @@ class QuoteStateActions extends StateActions<TQuoteStateAction> {
     };
 
     private _setQuote = (apiQuote: TQuoteApiDataQuote): void => {
+        const { author, text } = apiQuote;
         return this.dispatch({
             type: ACTIONS.SET_QUOTE,
-            payload: new Quote(apiQuote),
+            payload: {
+                author,
+                text,
+            },
         });
     };
 
