@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
+import { Word } from 'classes';
 import { IProps } from './TypingText.types';
+import { HighlightedWord } from './HighlightedWord/HightlightedWord';
 
 export const TypingText: React.FC<IProps> = (props) => {
     const { currentQuote, allUserWords } = props;
@@ -9,28 +11,29 @@ export const TypingText: React.FC<IProps> = (props) => {
         setCurrentIndex(currentQuote.getCurrentIndex());
     }, [allUserWords]);
 
-    return (
-        <div>
-            <h3>
-                {currentQuote.length === 0
-                    ? 'Get a new quote'
-                    : currentQuote.words.map((word, idx) => {
-                          let color;
+    const isQuoteSelected = currentQuote.length !== 0;
 
-                          if (idx === currentIndex) {
-                              color =
-                                  word === allUserWords[currentIndex]
-                                      ? 'green'
-                                      : 'orange';
-                          } else if (idx < currentIndex) {
-                              color =
-                                  word === allUserWords[idx] ? 'green' : 'red';
-                          } else {
-                              color = 'black';
-                          }
-                          return <span style={{ color }}>{`${word} `}</span>;
-                      })}
-            </h3>
-        </div>
+    if (!isQuoteSelected) {
+        return <h3>Choose a new quote</h3>;
+    }
+
+    return (
+        <h3>
+            {currentQuote.words.map((quoteWord, wordIndex) => {
+                const status = Word.getStatus(wordIndex, currentIndex);
+                const userWord = allUserWords[wordIndex];
+                const isLastWord = wordIndex === currentQuote.length - 1;
+
+                return (
+                    <HighlightedWord
+                        quoteWord={quoteWord}
+                        userWord={userWord}
+                        status={status}
+                        isLastWord={isLastWord}
+                        key={quoteWord + wordIndex}
+                    />
+                );
+            })}
+        </h3>
     );
 };
