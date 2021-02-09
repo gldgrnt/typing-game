@@ -1,10 +1,9 @@
 export class Quote {
-    author: string;
-    length: number;
-    words: string[];
-    currentIndex = 0;
-    dateFinished = new Date();
-    isFinished = false;
+    readonly author: string;
+    readonly length: number;
+    readonly words: string[];
+    private currentIndex = 0;
+    private isFinished = false;
 
     constructor(author = '', text = '') {
         this.author = author;
@@ -50,7 +49,6 @@ export class Quote {
 
     finishQuote(): void {
         this.isFinished = true;
-        this.dateFinished = new Date();
     }
 
     getFinishedStatus(): boolean {
