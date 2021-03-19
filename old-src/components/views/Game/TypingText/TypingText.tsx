@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Word } from 'classes';
+// import { Word } from 'classes';
 import { IProps } from './TypingText.types';
 import { HighlightedWord } from './HighlightedWord/HightlightedWord';
 
