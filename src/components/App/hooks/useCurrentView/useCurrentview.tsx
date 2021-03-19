@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import * as Views from 'components/views';
 import { TuseCurrentView } from './useCurrentView.types';
 
@@ -20,17 +20,21 @@ const intialView = registeredViews[0].name;
 export const useCurrentView: TuseCurrentView = () => {
     const [currentView, setCurrentView] = useState(intialView);
 
-    // Programmatically create functions
-    const setView = registeredViews.reduce((acc, view) => {
-        return {
-            ...acc,
-            [`to${view.name}View`]: () => setCurrentView(view.name),
-        };
-    }, {});
+    // Memoize setView as the object will always be the same
+    const setView = useMemo(
+        () =>
+            registeredViews.reduce((actions, view) => {
+                return {
+                    ...actions,
+                    [`to${view.name}View`]: () => setCurrentView(view.name),
+                };
+            }, {}),
+        [registeredViews, setCurrentView]
+    );
 
-    const checkView = registeredViews.reduce((acc, view) => {
+    const checkView = registeredViews.reduce((actions, view) => {
         return {
-            ...acc,
+            ...actions,
             [`is${view.name}View`]: () => currentView === view.name,
         };
     }, {});
