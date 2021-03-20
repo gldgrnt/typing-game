@@ -1,12 +1,8 @@
-import React from 'react';
+import { TCheckView, TSetView } from 'components/App/hooks/useCurrentView';
 
 interface IProps {
-    setView: {
-        [key: string]: () => void;
-    };
-    checkView: {
-        [key: string]: () => boolean;
-    };
+    setView: TSetView;
+    checkView: TCheckView;
 }
 
 export type THeader = React.FC<IProps>;

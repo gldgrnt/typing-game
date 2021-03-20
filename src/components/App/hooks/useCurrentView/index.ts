@@ -1,2 +1,6 @@
-export { useCurrentView } from './useCurrentview';
-export type { TuseCurrentView } from './useCurrentView.types';
+export { useCurrentView, VIEWS } from './useCurrentview';
+export type {
+    TuseCurrentView,
+    TCheckView,
+    TSetView,
+} from './useCurrentView.types';

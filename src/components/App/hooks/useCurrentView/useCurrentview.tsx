@@ -1,47 +1,33 @@
-import { useState, useMemo } from 'react';
-import * as Views from 'components/views';
+import { useState, useCallback } from 'react';
+import * as ViewComponents from 'components/views';
 import { TuseCurrentView } from './useCurrentView.types';
 
-// Register all views
-const registeredViews = [
-    {
-        component: Views.GameView,
-        name: 'Game',
-    },
-    {
-        component: Views.HistoryView,
-        name: 'History',
-    },
-];
-
-// Choose initial view
-const intialView = registeredViews[0].name;
+export enum VIEWS {
+    GAME_VIEW,
+    HISTORY_VIEW,
+}
 
 export const useCurrentView: TuseCurrentView = () => {
-    const [currentView, setCurrentView] = useState(intialView);
+    const [currentView, setCurrentView] = useState(VIEWS.GAME_VIEW);
 
-    // Memoize setView as the object will always be the same
-    const setView = useMemo(
-        () =>
-            registeredViews.reduce((actions, view) => {
-                return {
-                    ...actions,
-                    [`to${view.name}View`]: () => setCurrentView(view.name),
-                };
-            }, {}),
-        [registeredViews, setCurrentView]
+    // Helper functions
+    const setView = useCallback(
+        // Return a function to setView can be placed directly into an onClick={} handler
+        (VIEW: VIEWS) => () => setCurrentView(VIEW),
+        [setCurrentView]
     );
 
-    const checkView = registeredViews.reduce((actions, view) => {
-        return {
-            ...actions,
-            [`is${view.name}View`]: () => currentView === view.name,
-        };
-    }, {});
+    const checkView = (VIEW: VIEWS) => currentView === VIEW;
 
-    const ViewComponent = registeredViews.filter(
-        (view) => view.name === currentView
-    )[0].component;
+    const ViewComponent = (() => {
+        switch (currentView) {
+            case VIEWS.GAME_VIEW:
+                return ViewComponents.GameView;
+
+            case VIEWS.HISTORY_VIEW:
+                return ViewComponents.HistoryView;
+        }
+    })();
 
     return { ViewComponent, setView, checkView };
 };
