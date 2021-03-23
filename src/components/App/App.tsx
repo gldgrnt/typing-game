@@ -1,13 +1,17 @@
-import { useCurrentView } from './hooks/useCurrentView';
 import { Header } from './Header';
+import { Main } from './Main';
+import { Footer } from './Footer';
+// Local
+import { ViewContextProvider } from './_state/ViewState';
 
 export const App: React.FC = () => {
-    const { ViewComponent, setView, checkView } = useCurrentView();
-
     return (
         <div className="App">
-            <Header setView={setView} checkView={checkView} />
-            <ViewComponent />
+            <ViewContextProvider>
+                <Header />
+                <Main />
+            </ViewContextProvider>
+            <Footer />
         </div>
     );
 };

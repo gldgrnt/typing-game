@@ -1,18 +1,19 @@
-import { VIEWS } from 'components/App/hooks/useCurrentView';
-import { THeader } from './Header.types';
+import { TViewContext, useViewContext } from 'components/App/_state/ViewState';
 
-export const Header: THeader = ({ setView, checkView }) => {
+export const Header: React.FC = () => {
+    const [{ isActiveView }, actions] = useViewContext() as TViewContext;
+
     return (
         <header>
             <button
-                disabled={checkView(VIEWS.GAME_VIEW)}
-                onClick={setView(VIEWS.GAME_VIEW)}
+                onClick={actions.setToGameView}
+                disabled={isActiveView.GameView}
             >
                 Game
             </button>
             <button
-                disabled={checkView(VIEWS.HISTORY_VIEW)}
-                onClick={setView(VIEWS.HISTORY_VIEW)}
+                onClick={actions.setToHistoryView}
+                disabled={isActiveView.HistoryView}
             >
                 History
             </button>
