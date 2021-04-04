@@ -1,8 +1,8 @@
+import { ViewContextProvider } from './_state/ViewState';
+// Components
 import { Header } from './Header';
 import { Main } from './Main';
 import { Footer } from './Footer';
-// Local
-import { ViewContextProvider } from './_state/ViewState';
 
 export const App: React.FC = () => {
     return (

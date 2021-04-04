@@ -1,5 +1,5 @@
 import { RegisteredViews } from 'components/App/Main/';
-import { ViewStateActions, ACTIONS } from './ViewState.actions';
+import { ACTIONS } from './ViewState.actions';
 
 export type TRegistredViews = keyof typeof RegisteredViews;
 
@@ -9,8 +9,6 @@ export type TViewState = {
         [key in TRegistredViews]: boolean;
     };
 };
-
-export type TViewContext = [TViewState, ViewStateActions];
 
 export type TViewStateAction = {
     type: ACTIONS;

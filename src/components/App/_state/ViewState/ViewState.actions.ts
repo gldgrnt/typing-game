@@ -1,6 +1,6 @@
-import { StateActions } from 'shared/state';
 import { RegisteredViews } from 'components/App/Main';
-// Local
+import { StateActions } from 'shared/state/_actions';
+//
 import { TViewStateAction } from './ViewState.types';
 
 export enum ACTIONS {

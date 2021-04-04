@@ -1,3 +1,3 @@
-export interface IStateActions<TStateAction> {
-    dispatch: React.Dispatch<TStateAction>;
+export interface IActionsConstructor<TClass, TStateAction> {
+    new (dispatch: React.Dispatch<TStateAction>): TClass;
 }

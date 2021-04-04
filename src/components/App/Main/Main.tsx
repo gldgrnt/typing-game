@@ -1,7 +1,7 @@
-import { TViewContext, useViewContext } from 'components/App/_state/ViewState';
+import { useViewContext } from 'components/App/_state/ViewState';
 
 export const Main: React.FC = () => {
-    const [ViewState] = useViewContext() as TViewContext;
+    const [ViewState] = useViewContext();
     const ActiveView = ViewState.activeView;
 
     return (
