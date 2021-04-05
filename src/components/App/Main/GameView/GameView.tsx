@@ -1,4 +1,4 @@
-import { GameContextProvider } from './_state/GameState';
+import { GameContextProvider } from './_contexts/GameContext';
 import { Quote } from './Quote';
 
 export const GameView: React.FC = () => {

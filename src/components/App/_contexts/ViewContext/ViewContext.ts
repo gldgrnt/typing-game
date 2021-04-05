@@ -1,7 +1,7 @@
-import { contextCreator } from 'state';
+import { contextCreator } from 'context';
 // Local
-import { reducer, initialState } from './ViewState.reducer';
-import { ViewStateActions } from './ViewState.actions';
+import { reducer, initialState } from './_reducer';
+import { ViewStateActions } from './_actions';
 
 const createdContext = contextCreator(initialState, reducer, ViewStateActions);
 

@@ -1,4 +1,4 @@
-import { useGameContext } from './_state/GameState';
+import { useGameContext } from './_contexts/GameContext';
 import { useGetQuote } from './_hooks/useGetQuote';
 
 export const Quote: React.FC = () => {

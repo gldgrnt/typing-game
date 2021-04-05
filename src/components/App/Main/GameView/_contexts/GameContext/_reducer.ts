@@ -1,5 +1,5 @@
-import { TGameState, TGameStateAction } from './GameState.types';
-import { ACTIONS } from './GameState.actions';
+import { TGameState, TGameStateAction } from './_types';
+import { ACTIONS } from './_actions';
 
 export const initialState: TGameState = TGameState.INITIAL;
 

@@ -1,5 +1,5 @@
 import { RegisteredViews } from 'components/App/Main/';
-import { ACTIONS } from './ViewState.actions';
+import { ACTIONS } from './_actions';
 
 export type TRegistredViews = keyof typeof RegisteredViews;
 

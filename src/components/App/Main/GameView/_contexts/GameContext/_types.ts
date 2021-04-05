@@ -1,4 +1,4 @@
-import { ACTIONS } from './GameState.actions';
+import { ACTIONS } from './_actions';
 
 export enum TGameState {
     INITIAL,

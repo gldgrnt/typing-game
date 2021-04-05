@@ -1,7 +1,7 @@
 import { RegisteredViews } from 'components/App/Main';
-import { StateActions } from 'state';
+import { StateActions } from 'context';
 //
-import { TViewStateAction } from './ViewState.types';
+import { TViewStateAction } from './_types';
 
 export enum ACTIONS {
     SET_VIEW,

@@ -1,7 +1,7 @@
-import { contextCreator } from 'state';
+import { contextCreator } from 'context';
 //
-import { reducer, initialState } from './GameState.reducer';
-import { GameStateActions } from './GameState.actions';
+import { reducer, initialState } from './_reducer';
+import { GameStateActions } from './_actions';
 
 const createdContext = contextCreator(initialState, reducer, GameStateActions);
 

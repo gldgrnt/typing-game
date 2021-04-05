@@ -1,4 +1,4 @@
-import { useViewContext } from 'components/App/_state/ViewState';
+import { useViewContext } from 'components/App/_contexts/ViewContext';
 
 export const Main: React.FC = () => {
     const { state } = useViewContext();

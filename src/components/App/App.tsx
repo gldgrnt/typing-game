@@ -1,4 +1,4 @@
-import { ViewContextProvider } from './_state/ViewState';
+import { ViewContextProvider } from './_contexts/ViewContext';
 // Components
 import { Header } from './Header';
 import { Main } from './Main';

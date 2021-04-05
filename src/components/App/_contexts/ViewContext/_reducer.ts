@@ -1,7 +1,7 @@
 import { GameView } from 'components/App/Main/GameView';
 // Local
-import { ACTIONS } from './ViewState.actions';
-import { TViewState, TViewStateAction } from './ViewState.types';
+import { ACTIONS } from './_actions';
+import { TViewState, TViewStateAction } from './_types';
 
 export const initialState: TViewState = {
     activeView: GameView,

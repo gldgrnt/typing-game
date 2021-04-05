@@ -1,5 +1,5 @@
-import { StateActions } from 'state';
-import { TGameStateAction } from './GameState.types';
+import { StateActions } from 'context';
+import { TGameStateAction } from './_types';
 
 export enum ACTIONS {
     SET_LOADING,
