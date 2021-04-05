@@ -1,8 +1,8 @@
 import { useViewContext } from 'components/App/_state/ViewState';
 
 export const Main: React.FC = () => {
-    const [ViewState] = useViewContext();
-    const ActiveView = ViewState.activeView;
+    const { state } = useViewContext();
+    const ActiveView = state.activeView;
 
     return (
         <main>
