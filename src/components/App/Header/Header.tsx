@@ -1,19 +1,19 @@
 import { useViewContext } from 'components/App/_state/ViewState';
 
 export const Header: React.FC = () => {
-    const [{ isActiveView }, actions] = useViewContext();
+    const { state, actions } = useViewContext();
 
     return (
         <header>
             <button
                 onClick={actions.setToGameView}
-                disabled={isActiveView.GameView}
+                disabled={state.isActiveView.GameView}
             >
                 Game
             </button>
             <button
                 onClick={actions.setToHistoryView}
-                disabled={isActiveView.HistoryView}
+                disabled={state.isActiveView.HistoryView}
             >
                 History
             </button>

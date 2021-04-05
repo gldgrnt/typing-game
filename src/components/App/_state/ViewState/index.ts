@@ -1,5 +1,1 @@
-export {
-    ViewContext,
-    ViewContextProvider,
-    useViewContext,
-} from './ViewState.context';
+export { ViewContextProvider, useViewContext } from './ViewState';

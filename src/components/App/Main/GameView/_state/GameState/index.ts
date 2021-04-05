@@ -1,5 +1,1 @@
-export {
-    GameContext,
-    GameContextProvider,
-    useGameContext,
-} from './GameState.context';
+export { GameContextProvider, useGameContext } from './GameState';
