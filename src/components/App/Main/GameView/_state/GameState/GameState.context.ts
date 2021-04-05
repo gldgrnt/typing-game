@@ -1,4 +1,4 @@
-import { contextCreator } from 'shared/state/_context';
+import { contextCreator } from 'state';
 //
 import { reducer, initialState } from './GameState.reducer';
 import { GameStateActions } from './GameState.actions';

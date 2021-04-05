@@ -1,4 +1,4 @@
-import { contextCreator } from 'shared/state/_context';
+import { contextCreator } from 'state';
 // Local
 import { reducer, initialState } from './ViewState.reducer';
 import { ViewStateActions } from './ViewState.actions';

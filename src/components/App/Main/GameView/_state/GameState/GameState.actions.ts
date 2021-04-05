@@ -1,4 +1,4 @@
-import { StateActions } from 'shared/state/_actions';
+import { StateActions } from 'state';
 import { TGameStateAction } from './GameState.types';
 
 export enum ACTIONS {

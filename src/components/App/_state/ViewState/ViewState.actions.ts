@@ -1,5 +1,5 @@
 import { RegisteredViews } from 'components/App/Main';
-import { StateActions } from 'shared/state/_actions';
+import { StateActions } from 'state';
 //
 import { TViewStateAction } from './ViewState.types';
 
