@@ -1,0 +1,1 @@
+export { useGetQuote } from './useGetQuote';
