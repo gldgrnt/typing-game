@@ -1,21 +1,13 @@
-import { IProps } from './ProviderComposer.types';
+import { IProps } from './_types';
 
-const ContextProviderComposer = (props: IProps): React.FC | React.ReactNode => {
-    const { contextProviders, children } = props;
-    // Return the children
-    if (contextProviders.length === 0) {
-        return props.children;
-    }
-    // Set up the outermost context and recurse
-    const [OuterContextProvider, ...otherContextProviders] = contextProviders;
+export const ProviderComposer: React.FC<IProps> = (props) => {
+    const { contextProviders = [], children } = props;
 
     return (
-        <OuterContextProvider>
-            <ProviderComposer contextProviders={otherContextProviders}>
-                {children}
-            </ProviderComposer>
-        </OuterContextProvider>
+        <>
+            {contextProviders.reduceRight((acc, Provider) => {
+                return <Provider>{acc}</Provider>;
+            }, children)}
+        </>
     );
 };
-
-export const ProviderComposer = ContextProviderComposer as React.FC<IProps>;

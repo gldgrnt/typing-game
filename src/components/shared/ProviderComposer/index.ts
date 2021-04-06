@@ -1,2 +1,1 @@
-export * from './ProviderComposer';
-export * from './ProviderComposer.types';
+export { ProviderComposer } from './ProviderComposer';
