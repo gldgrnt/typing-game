@@ -3,6 +3,7 @@ import { GameContext, QuoteContext } from './_contexts';
 const { GameContextProvider } = GameContext;
 const { QuoteContextProvider } = QuoteContext;
 import { Quote } from './Quote';
+import { Input } from './Input';
 
 export const GameView: React.FC = () => {
     return (
@@ -11,6 +12,7 @@ export const GameView: React.FC = () => {
         >
             <h1>This is the Game view</h1>
             <Quote />
+            <Input />
         </ProviderComposer>
     );
 };
