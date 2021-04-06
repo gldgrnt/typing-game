@@ -1,14 +1,15 @@
-import { useGameContext } from './_contexts/GameContext';
+import { GameContext, QuoteContext } from './_contexts';
 import { useGetQuote } from './_hooks/useGetQuote/useGetQuote';
 
 export const Quote: React.FC = () => {
-    const { state } = useGameContext();
-    const { quote, getQuote } = useGetQuote();
+    const gameContext = GameContext.useGameContext();
+    const quoteContext = QuoteContext.useQuoteContext();
+    const getQuote = useGetQuote();
 
     return (
         <div>
-            <h2>{quote.text || 'Get a new quote!'}</h2>
-            <p>{state}</p>
+            <h2>{quoteContext.state.text || 'Get a new quote!'}</h2>
+            <p>{gameContext.state}</p>
             <button onClick={getQuote}>Get quote</button>
         </div>
     );
