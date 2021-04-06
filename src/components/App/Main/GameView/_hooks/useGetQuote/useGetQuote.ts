@@ -1,12 +1,12 @@
 import axios from 'axios';
-import { useRef, useEffect, useState } from 'react';
-import { useGameContext } from '../../_contexts/GameContext';
+import { useRef, useEffect } from 'react';
+import { GameContext, QuoteContext } from '../../_contexts';
 import { TUseGetQuote } from './_types';
 
 export const useGetQuote: TUseGetQuote = () => {
-    const [quote, setQuote] = useState({ text: '', author: '' });
     const mounted = useRef(true);
-    const gameContext = useGameContext();
+    const gameContext = GameContext.useGameContext();
+    const quoteContext = QuoteContext.useQuoteContext();
 
     const getQuote = async () => {
         gameContext.actions.setLoading();
@@ -18,7 +18,7 @@ export const useGetQuote: TUseGetQuote = () => {
                 'https://goquotes-api.herokuapp.com/api/v1/random?count=1'
             );
             const { author, text } = response.data.quotes[0];
-            setQuote({ author, text });
+            quoteContext.actions.setQuote({ author, text });
             gameContext.actions.setNotStarted();
         } catch (error) {
             console.log(error);
@@ -32,8 +32,5 @@ export const useGetQuote: TUseGetQuote = () => {
         };
     }, []);
 
-    return {
-        quote,
-        getQuote,
-    };
+    return getQuote;
 };
