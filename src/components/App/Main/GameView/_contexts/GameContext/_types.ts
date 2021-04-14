@@ -1,6 +1,6 @@
 import { ACTIONS } from './_actions';
 
-export enum TGameState {
+export enum GAME_STATE {
     INITIAL,
     LOADING,
     NOT_STARTED,
