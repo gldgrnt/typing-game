@@ -21,6 +21,7 @@ export const useGetQuote: TUseGetQuote = () => {
             quoteContext.actions.setQuote({ author, text });
             gameContext.actions.setNotStarted();
         } catch (error) {
+            // eslint-disable-next-line no-console
             console.log(error);
             // Handle the error
         }
