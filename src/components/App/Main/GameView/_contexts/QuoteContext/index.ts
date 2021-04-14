@@ -1,1 +1,1 @@
-export { QuoteContextProvider, useQuoteContext } from './QuoteContext';
+export * from './QuoteContext';
